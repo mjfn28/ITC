@@ -1,6 +1,7 @@
 #include "GameScene.h"
 #include "Star.h"
 #include "Ship.h"
+#include "Player.h"
 
 #include <stdlib.h>
 
@@ -17,6 +18,9 @@ GameScene::GameScene()
 	Ship* sh = new Ship(s);
 	msh = sh;
 	Entities.push_back(sh);
+
+	Player* p = new Player();
+	Entities.push_back(p);
 }
 
 void GameScene::HandleEvent(SDL_Event* e)

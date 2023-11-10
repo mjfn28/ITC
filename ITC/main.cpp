@@ -10,6 +10,7 @@ and may not be redistributed without written permission.*/
 #include "Rendering.h"
 #include "Physics.h"
 #include "SDLImageLoader.h"
+#include "SDLFontLoader.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -68,6 +69,7 @@ int main(int argc, char* args[])
 
 		SDL_Surface* gScreenSurface = SDL_GetWindowSurface(window);
 		SDLImageLoader::Initialize(gScreenSurface->format);
+		SDLFontLoader::Initialize();
 
 		//Event handler
 		SDL_Event e;

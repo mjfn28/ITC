@@ -1,10 +1,2 @@
-﻿  Star.cpp
-C:\Users\alexs\source\repos\ITC\ITC\Star.cpp(10,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\alexs\source\repos\ITC\ITC\Star.cpp(11,20): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\alexs\source\repos\ITC\ITC\Star.cpp(40,42): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\alexs\source\repos\ITC\ITC\Star.cpp(40,42): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\alexs\source\repos\ITC\ITC\Star.cpp(40,63): warning C4838: conversion from 'float' to 'int' requires a narrowing conversion
-C:\Users\alexs\source\repos\ITC\ITC\Star.cpp(40,63): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\alexs\source\repos\ITC\ITC\Star.cpp(47,50): warning C4244: 'argument': conversion from 'float' to 'int32_t', possible loss of data
-C:\Users\alexs\source\repos\ITC\ITC\Star.cpp(47,33): warning C4244: 'argument': conversion from 'float' to 'int32_t', possible loss of data
-  ITC.vcxproj -> C:\Users\alexs\source\repos\ITC\x64\Debug\ITC.exe
+﻿  Player.cpp
+  ITC.vcxproj -> C:\ITC\ITC\x64\Debug\ITC.exe

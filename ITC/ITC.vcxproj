@@ -23,7 +23,10 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Movement.cpp" />
     <ClCompile Include="Physics.cpp" />
+    <ClCompile Include="Player.cpp" />
+    <ClCompile Include="Player.h" />
     <ClCompile Include="Rendering.cpp" />
+    <ClCompile Include="SDLFontLoader.cpp" />
     <ClCompile Include="SDLImageLoader.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Star.cpp" />
@@ -38,6 +41,7 @@
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="Rendering.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="SDLFontLoader.h" />
     <ClInclude Include="SDLImageLoader.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="Star.h" />

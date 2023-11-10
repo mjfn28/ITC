@@ -15,7 +15,6 @@ Star::Star(int posX, int posY)
 	mComponents.push_back(sr);
 
 	CargoList.push_back(new Cargo(CargoType::Ice, 100));
-	
 }
 
 void Star::MouseMove(int x, int y)
