@@ -19,5 +19,7 @@ public:
     }
 
     TTF_Font* LoadFont(const char* file);
+
+    SDL_Texture* GetText(TTF_Font* font, char* text);
 };
 

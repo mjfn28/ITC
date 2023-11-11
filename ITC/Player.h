@@ -4,6 +4,7 @@
 #include "Ship.h"
 #include "Entity.h"
 #include <SDL_ttf.h>
+#include "Label.h"
 
 typedef std::list<Ship*> Ships;
 
@@ -18,7 +19,7 @@ public:
 class PlayerRenderable : public Renderable
 {
 private:
-	TTF_Font* mFont;
+	Label* mLabel;
 public:
 	PlayerRenderable(Entity* holder);
 	void Render(SDL_Renderer* renderer) override;

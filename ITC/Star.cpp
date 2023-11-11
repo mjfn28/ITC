@@ -6,6 +6,14 @@
 
 Star::Star(int posX, int posY)
 {
+	char buffer[8];
+	//srand(0);
+	int num = rand() % 10;
+
+	// print "My age is " and age variable to buffer variable
+	sprintf_s(buffer, "Star %d", num);
+	Name = buffer;
+
 	Transform* transform = new Transform(this);
 	transform->PosX = posX;
 	transform->PosY = posY;

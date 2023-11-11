@@ -1,2 +1,5 @@
-﻿  Player.cpp
+﻿  GameScene.cpp
+  Label.cpp
+  Player.cpp
+  Generating Code...
   ITC.vcxproj -> C:\ITC\ITC\x64\Debug\ITC.exe

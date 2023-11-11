@@ -7,6 +7,7 @@
 
 class Star : public Entity {
 public:
+	const char* Name;
 	Star(int posX, int posY);
 	void MouseMove(int x, int y) override;
 	std::list<Cargo*> CargoList;

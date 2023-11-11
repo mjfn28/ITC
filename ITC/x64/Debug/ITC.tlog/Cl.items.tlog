@@ -1,9 +1,9 @@
 C:\ITC\ITC\ITC\GameScene.cpp;C:\ITC\ITC\ITC\x64\Debug\GameScene.obj
+C:\ITC\ITC\ITC\Label.cpp;C:\ITC\ITC\ITC\x64\Debug\Label.obj
 C:\ITC\ITC\ITC\main.cpp;C:\ITC\ITC\ITC\x64\Debug\main.obj
 C:\ITC\ITC\ITC\Movement.cpp;C:\ITC\ITC\ITC\x64\Debug\Movement.obj
 C:\ITC\ITC\ITC\Physics.cpp;C:\ITC\ITC\ITC\x64\Debug\Physics.obj
 C:\ITC\ITC\ITC\Player.cpp;C:\ITC\ITC\ITC\x64\Debug\Player.obj
-C:\ITC\ITC\ITC\Player.h;C:\ITC\ITC\ITC\x64\Debug\Player.obj
 C:\ITC\ITC\ITC\Rendering.cpp;C:\ITC\ITC\ITC\x64\Debug\Rendering.obj
 C:\ITC\ITC\ITC\SDLFontLoader.cpp;C:\ITC\ITC\ITC\x64\Debug\SDLFontLoader.obj
 C:\ITC\ITC\ITC\SDLImageLoader.cpp;C:\ITC\ITC\ITC\x64\Debug\SDLImageLoader.obj
