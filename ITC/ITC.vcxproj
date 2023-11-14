@@ -47,6 +47,7 @@
     <ClInclude Include="SDLImageLoader.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="Star.h" />
+    <ClInclude Include="StarNameGenerator.h" />
     <ClInclude Include="System.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>

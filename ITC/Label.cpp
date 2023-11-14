@@ -48,6 +48,8 @@ SDL_Texture* Label::GetTexture()
 
 void Label::Update()
 {
+	SDL_DestroyTexture(mTexture);
+
 	SDL_Surface* textSurface = TTF_RenderText_Solid(mFont, mText, mTextColor);
 	mTexture = SDL_CreateTextureFromSurface(mRenderer, textSurface);
 	mWidth = textSurface->w;
@@ -58,6 +60,7 @@ void Label::Update()
 
 void Label::SetText(const char* newText) 
 {
+	delete[] mText;
 	mText = new char[strlen(newText) + 1];
 	strcpy(mText, newText);
 
