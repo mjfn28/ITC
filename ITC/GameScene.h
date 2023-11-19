@@ -3,11 +3,12 @@
 #include "Scene.h"
 #include "Star.h"
 #include "Ship.h"
+#include "Player.h"
 
 class GameScene : public Scene
 {
 private:
-	Ship* msh;
+	Player* mPlayer;
 public:
 	GameScene();
 	void HandleEvent(SDL_Event* e);

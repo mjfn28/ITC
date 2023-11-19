@@ -30,6 +30,7 @@
     <ClCompile Include="SDLImageLoader.cpp" />
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Star.cpp" />
+    <ClCompile Include="StarNameGenerator.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cargo.h" />

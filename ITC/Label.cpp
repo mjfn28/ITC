@@ -60,9 +60,12 @@ void Label::Update()
 
 void Label::SetText(const char* newText) 
 {
-	delete[] mText;
-	mText = new char[strlen(newText) + 1];
-	strcpy(mText, newText);
+	if (mText == NULL || strcmp(newText, mText) != 0)
+	{
+		delete[] mText;
+		mText = new char[strlen(newText) + 1];
+		strcpy(mText, newText);
 
-	mNeedsUpdate = true;
+		mNeedsUpdate = true;
+	}
 }

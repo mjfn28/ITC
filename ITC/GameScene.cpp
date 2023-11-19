@@ -14,13 +14,17 @@ GameScene::GameScene()
 		Entities.push_back(new Star(rand() % 640, rand() % 480));
 	}
 
+	Player* p = new Player();
+	mPlayer = p;
+	Entities.push_back(p);
+
 	Star* s = static_cast<Star*>(Entities.front());
 	Ship* sh = new Ship(s);
-	msh = sh;
 	Entities.push_back(sh);
 
-	Player* p = new Player();
-	Entities.push_back(p);
+	
+
+	mPlayer->SelectShip(sh);
 }
 
 void GameScene::HandleEvent(SDL_Event* e)
@@ -33,7 +37,7 @@ void GameScene::HandleEvent(SDL_Event* e)
 			Star* s = reinterpret_cast<Star*>(i);
 			if (s->IsMouseOver)
 			{
-				msh->SelectTarget(s);
+				mPlayer->SendSelectedShipToTarget(s);
 			}
 		}
 		

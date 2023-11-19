@@ -17,12 +17,12 @@ public :
 	Ship(Star* currentLocation);
 	void SelectTarget(Star* target);
 	void ArriveAtTarget();
+	ShipState State;
+	Star* CurrentLocation;
 
 private :
-	Star* mCurrentLocation;
 	Star* mTargetLocation;
 
-	ShipState mState;
 };
 
 class ShipRenderable : public Renderable

@@ -4,10 +4,11 @@
 #include "Cargo.h"
 #include "Entity.h"
 #include "Renderable.h"
+#include <string>
 
 class Star : public Entity {
 public:
-	const char* Name;
+	std::string Name;
 	Star(int posX, int posY);
 	void MouseMove(int x, int y) override;
 	std::list<Cargo*> CargoList;

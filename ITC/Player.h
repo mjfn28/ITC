@@ -14,12 +14,16 @@ public:
 	Player();
 	float Credits;
 	Ships Ships;
+	void SendSelectedShipToTarget(Star* target);
+	void SelectShip(Ship* ship);
+	Ship* SelectedShip;
 };
 
 class PlayerRenderable : public Renderable
 {
 private:
 	Label* mLabel;
+	Label* mLocationLabel;
 public:
 	PlayerRenderable(Entity* holder);
 	void Render(SDL_Renderer* renderer) override;
