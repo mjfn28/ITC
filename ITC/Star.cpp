@@ -4,9 +4,12 @@
 #include "Transform.h"
 #include "SDLImageLoader.h"
 #include "StarNameGenerator.h"
+#include "Player.h"
 
-Star::Star(int posX, int posY)
+Star::Star(Player* player, int posX, int posY)
 {
+	mPlayer = player;
+
 	Name = StarNameGenerator::GenerateName();
 
 	Transform* transform = new Transform(this);
@@ -17,21 +20,15 @@ Star::Star(int posX, int posY)
 	StarRenderable* sr = new StarRenderable(this);
 	mComponents.push_back(sr);
 
+	StarInputHandler* si = new StarInputHandler(this);
+	mComponents.push_back(si);
+
 	CargoList.push_back(new Cargo(CargoType::Ice, 100));
 }
 
-void Star::MouseMove(int x, int y)
+void Star::Select() 
 {
-	Transform* transform = GetComponent<Transform>().front();
-
-	if (sqrt(pow(x - transform->PosX, 2) + pow(y - transform->PosY, 2)) < 10)
-	{
-		IsMouseOver = true;
-	}
-	else
-	{
-		IsMouseOver = false;
-	}
+	mPlayer->SendSelectedShipToTarget(this);
 }
 
 void StarRenderable::Render(SDL_Renderer* renderer)
@@ -44,7 +41,7 @@ void StarRenderable::Render(SDL_Renderer* renderer)
 
 	SDL_RenderCopy(renderer, GetTexture(renderer), &src, &renderQuad);
 
-	if (mHolder->IsMouseOver)
+	if (mHolder->GetComponent<StarInputHandler>().front()->IsMouseOver)
 	{
 		DrawCircle(renderer, transform->PosX, transform->PosY, 10);
 	}
@@ -97,5 +94,29 @@ void StarRenderable::DrawCircle(SDL_Renderer* renderer, int32_t centreX, int32_t
 			tx += 2;
 			error += (tx - diameter);
 		}
+	}
+}
+
+void StarInputHandler::HandleMouseMove(int x, int y)
+{
+	Transform* transform = mHolder->GetComponent<Transform>().front();
+
+	if (sqrt(pow(x - transform->PosX, 2) + pow(y - transform->PosY, 2)) < 10)
+	{
+		IsMouseOver = true;
+	}
+	else
+	{
+		IsMouseOver = false;
+	}
+}
+
+void StarInputHandler::HandleMouseDown()
+{
+	Star* star = static_cast<Star*>(mHolder);
+
+	if (IsMouseOver)
+	{
+		star->Select();
 	}
 }

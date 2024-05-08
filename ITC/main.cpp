@@ -11,6 +11,7 @@ and may not be redistributed without written permission.*/
 #include "Physics.h"
 #include "SDLImageLoader.h"
 #include "SDLFontLoader.h"
+#include "Input.h"
 
 //Screen dimension constants
 const int SCREEN_WIDTH = 640;
@@ -56,7 +57,7 @@ int main(int argc, char* args[])
 	else
 	{
 		//Create renderer for window
-		gRenderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+		gRenderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_TARGETTEXTURE);
 		if (gRenderer == NULL)
 		{
 			printf("Renderer could not be created! SDL Error: %s\n", SDL_GetError());
@@ -78,22 +79,23 @@ int main(int argc, char* args[])
 
 		Rendering rendering(gRenderer);
 		Physics physics;
+		Input input;
 
 		lastTicks = SDL_GetTicks64();
 
 		while (!quit)
 		{
 			//Handle events on queue
-			while (SDL_PollEvent(&e) != 0)
-			{
-				//User requests quit
-				if (e.type == SDL_QUIT)
-				{
-					quit = true;
-				}
+			//while (SDL_PollEvent(&e) != 0)
+			//{
+			//	//User requests quit
+			//	if (e.type == SDL_QUIT)
+			//	{
+			//		quit = true;
+			//	}
+			//}
 
-				s.HandleEvent(&e);
-			}
+			input.Update(s.Entities);
 
 			SDL_SetRenderDrawColor(gRenderer, 0x00, 0x00, 0x00, 0xFF);
 			//Clear screen

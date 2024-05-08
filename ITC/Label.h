@@ -1,27 +1,24 @@
 #pragma once
 #include <SDL.h>
 #include <SDL_ttf.h>
+#include "UIElement.h"
 
-class Label
+class Label : public UIElement
 {
 private:
 	TTF_Font* mFont;
-	SDL_Renderer* mRenderer;
 	char* mText;
 	int mWidth;
 	int mHeight;
 	SDL_Color mTextColor;
-	SDL_Texture* mTexture;
-	bool mNeedsUpdate;
 
-	void Update();
+	void Update(SDL_Renderer* renderer);
 
 public:
-	int GetWidth();
-	int GetHeight();
-	SDL_Texture* GetTexture();
+	SDL_Texture* GetTexture(SDL_Renderer* renderer) override;
+	SDL_Surface* GetSurface(SDL_Renderer* renderer) override;
 
 	void SetText(const char* newText);
 
-	Label(SDL_Renderer* renderer, Uint8 r, Uint8 g, Uint8 b, const char* file, const char* text);
+	Label(Uint8 r, Uint8 g, Uint8 b, const char* file, const char* text);
 };

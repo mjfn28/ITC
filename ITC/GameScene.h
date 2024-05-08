@@ -11,5 +11,5 @@ private:
 	Player* mPlayer;
 public:
 	GameScene();
-	void HandleEvent(SDL_Event* e);
+
 };

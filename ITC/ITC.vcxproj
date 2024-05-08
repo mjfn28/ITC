@@ -20,9 +20,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="GameScene.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="Label.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Movement.cpp" />
+    <ClCompile Include="Panel.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="Rendering.cpp" />
@@ -31,14 +33,20 @@
     <ClCompile Include="Ship.cpp" />
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="StarNameGenerator.cpp" />
+    <ClCompile Include="ToggleButton.cpp" />
+    <ClCompile Include="UI.h" />
+    <ClCompile Include="UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Cargo.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="GameScene.h" />
+    <ClInclude Include="Input.h" />
+    <ClInclude Include="InputHandler.h" />
     <ClInclude Include="Label.h" />
     <ClInclude Include="Movement.h" />
+    <ClInclude Include="Panel.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="Renderable.h" />
@@ -50,7 +58,10 @@
     <ClInclude Include="Star.h" />
     <ClInclude Include="StarNameGenerator.h" />
     <ClInclude Include="System.h" />
+    <ClInclude Include="ToggleButton.h" />
     <ClInclude Include="Transform.h" />
+    <ClInclude Include="Types.h" />
+    <ClInclude Include="UIElement.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="star.png" />

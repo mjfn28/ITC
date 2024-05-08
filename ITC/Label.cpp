@@ -1,61 +1,51 @@
+#include <string.h>
+#include <SDL.h>
 #include "Label.h"
 #include "SDLFontLoader.h"
-#include <string.h>
 
-Label::Label(SDL_Renderer* renderer, Uint8 r, Uint8 g, Uint8 b, const char* file, const char* text)
+Label::Label(Uint8 r, Uint8 g, Uint8 b, const char* file, const char* text)
+	:UIElement(nullptr)
 {
-	mRenderer = renderer;
 	mTextColor = { r, g, b };
 
 	mFont = SDLFontLoader::Instance->LoadFont(file);
 
 	SetText(text);
 	
-	Update();
+	//Update();
+	mTexture = nullptr;
 
-	mNeedsUpdate = false;
+	mNeedsUpdate = true;
 }
 
-int Label::GetWidth()
+SDL_Texture* Label::GetTexture(SDL_Renderer* renderer)
 {
 	if (mNeedsUpdate)
 	{
-		Update();
-	}
-
-	return mWidth;
-}
-
-int Label::GetHeight()
-{
-	if (mNeedsUpdate)
-	{
-		Update();
-	}
-
-	return mHeight;
-}
-
-SDL_Texture* Label::GetTexture()
-{
-	if (mNeedsUpdate)
-	{
-		Update();
+		Update(renderer);
 	}
 
 	return mTexture;
 }
 
-void Label::Update()
+SDL_Surface* Label::GetSurface(SDL_Renderer* renderer)
+{
+	if (mNeedsUpdate)
+	{
+		SDL_FreeSurface(mSurface);
+
+		mSurface = TTF_RenderText_Solid(mFont, mText, mTextColor);
+	}
+	return mSurface;
+}
+
+void Label::Update(SDL_Renderer* renderer)
 {
 	SDL_DestroyTexture(mTexture);
-
-	SDL_Surface* textSurface = TTF_RenderText_Solid(mFont, mText, mTextColor);
-	mTexture = SDL_CreateTextureFromSurface(mRenderer, textSurface);
+	SDL_Surface* textSurface = GetSurface(renderer);
+	mTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
 	mWidth = textSurface->w;
 	mHeight = textSurface->h;
-
-	SDL_FreeSurface(textSurface);
 }
 
 void Label::SetText(const char* newText) 

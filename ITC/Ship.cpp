@@ -33,7 +33,6 @@ void Ship::SelectTarget(Star* target)
 {
 	mTargetLocation = target;
 	Movement* mvmt = GetComponent<Movement>().front();
-	Transform* tgt;
 	if (mTargetLocation == nullptr)
 	{
 		mvmt->SetTarget(nullptr);

@@ -7,49 +7,30 @@
 
 GameScene::GameScene()
 {
-	srand(0);
-
-	for (int i = 0; i < 10; i++)
-	{
-		Entities.push_back(new Star(rand() % 640, rand() % 480));
-	}
-
 	Player* p = new Player();
 	mPlayer = p;
 	Entities.push_back(p);
 
-	Star* s = static_cast<Star*>(Entities.front());
-	Ship* sh = new Ship(s);
+	srand(0);
+
+	Star* start = nullptr;
+
+	for (int i = 0; i < 10; i++)
+	{
+		if (start == nullptr)
+		{
+			start = new Star(mPlayer, rand() % 640, rand() % 480);
+			Entities.push_back(start);
+
+		}
+		else 
+		{
+			Entities.push_back(new Star(mPlayer, rand() % 640, rand() % 480));
+		}
+	}
+
+	Ship* sh = new Ship(start);
 	Entities.push_back(sh);
 
-	
-
 	mPlayer->SelectShip(sh);
-}
-
-void GameScene::HandleEvent(SDL_Event* e)
-{
-    switch (e->type)
-    {
-    case SDL_MOUSEBUTTONDOWN:
-		for (auto const& i : Entities)
-		{
-			Star* s = reinterpret_cast<Star*>(i);
-			if (s->IsMouseOver)
-			{
-				mPlayer->SendSelectedShipToTarget(s);
-			}
-		}
-		
-        break;
-	case SDL_MOUSEMOTION:
-		//Get mouse position
-		int x, y;
-		SDL_GetMouseState(&x, &y);
-		for (auto const& i : Entities)
-		{
-			i->MouseMove(x, y);
-		}
-		break;
-	}
 }
