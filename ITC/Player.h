@@ -19,6 +19,13 @@ public:
 	void SendSelectedShipToTarget(Star* target);
 	void SelectShip(Ship* ship);
 	Ship* SelectedShip;
+private:
+	UIElement* InitializeUI();
+
+	Label* mLabel;
+	Label* mLocationLabel;
+	ToggleButton* mToggleButton;
+	Panel* mPanel;
 };
 
 class PlayerRenderable : public Renderable

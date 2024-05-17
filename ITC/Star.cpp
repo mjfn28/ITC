@@ -111,7 +111,7 @@ void StarInputHandler::HandleMouseMove(int x, int y)
 	}
 }
 
-void StarInputHandler::HandleMouseDown()
+void StarInputHandler::HandleMouseDown(int x, int y)
 {
 	Star* star = static_cast<Star*>(mHolder);
 

@@ -35,6 +35,6 @@ class StarInputHandler : public InputHandler
 {
 public:
 	using InputHandler::InputHandler;
-	void HandleMouseDown() override;
+	void HandleMouseDown(int x, int y) override;
 	void HandleMouseMove(int x, int y) override;
 };

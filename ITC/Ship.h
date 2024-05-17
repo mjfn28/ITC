@@ -19,6 +19,7 @@ public :
 	void ArriveAtTarget();
 	ShipState State;
 	Star* CurrentLocation;
+	float Fuel;
 
 private :
 	Star* mTargetLocation;

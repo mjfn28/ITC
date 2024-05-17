@@ -20,6 +20,8 @@ Ship::Ship(Star* currentLocation)
 	mComponents.push_back(m);
 
 	State = ShipState::IDLE;
+
+	Fuel = 100;
 }
 
 void Ship::ArriveAtTarget()
@@ -45,7 +47,7 @@ void Ship::SelectTarget(Star* target)
 }
 
 ShipRenderable::ShipRenderable(Entity* holder)
-	:Renderable(holder)
+	:Renderable(holder), Component(holder)
 {
 
 }

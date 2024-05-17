@@ -3,7 +3,7 @@
 #include <SDL.h>
 #include "Component.h"
 
-class Renderable : public Component
+class Renderable : virtual public Component
 {
 public :
 	using Component::Component;

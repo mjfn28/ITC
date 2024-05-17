@@ -5,6 +5,7 @@
 class Input : public System
 {
 public:
+	bool Quit = false;
 	void Update(std::list<Entity*> entities) override;
 
 private:

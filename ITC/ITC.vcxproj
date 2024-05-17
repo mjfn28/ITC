@@ -34,7 +34,8 @@
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="StarNameGenerator.cpp" />
     <ClCompile Include="ToggleButton.cpp" />
-    <ClCompile Include="UI.h" />
+    <ClCompile Include="UIRoot.cpp" />
+    <ClCompile Include="UIRoot.h" />
     <ClCompile Include="UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +55,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SDLFontLoader.h" />
     <ClInclude Include="SDLImageLoader.h" />
+    <ClInclude Include="Settings.h" />
     <ClInclude Include="Ship.h" />
     <ClInclude Include="Star.h" />
     <ClInclude Include="StarNameGenerator.h" />

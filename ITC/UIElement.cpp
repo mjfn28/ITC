@@ -11,3 +11,19 @@ UIElement::UIElement(UIElement* parent)
 
 	mTexture = nullptr;
 }
+
+void UIElement::HandleMouseDown(int x, int y)
+{
+	for (auto const& j : this->Children)
+	{
+		j->HandleMouseDown(x, y);
+	}
+}
+
+void UIElement::HandleMouseMove(int x, int y)
+{
+	for (auto const& j : this->Children)
+	{
+		j->HandleMouseMove(x, y);
+	}
+}

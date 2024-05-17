@@ -19,4 +19,7 @@ public :
 	UIElement(UIElement* Parent);
 	virtual SDL_Texture* GetTexture(SDL_Renderer* renderer) = 0;
 	virtual SDL_Surface* GetSurface(SDL_Renderer* renderer) = 0;
+
+	virtual void HandleMouseDown(int x, int y);
+	virtual void HandleMouseMove(int x, int y);
 };

@@ -2,7 +2,7 @@
 #include "Star.h"
 #include "Ship.h"
 #include "Player.h"
-
+#include "Settings.h"
 #include <stdlib.h>
 
 GameScene::GameScene()
@@ -15,17 +15,17 @@ GameScene::GameScene()
 
 	Star* start = nullptr;
 
-	for (int i = 0; i < 10; i++)
+	for (int i = 0; i < (rand() % 10) + 10; i++)
 	{
 		if (start == nullptr)
 		{
-			start = new Star(mPlayer, rand() % 640, rand() % 480);
+			start = new Star(mPlayer, rand() % Settings::getInstance().ScreenWidth, rand() % Settings::getInstance().ScreenHeight);
 			Entities.push_back(start);
 
 		}
 		else 
 		{
-			Entities.push_back(new Star(mPlayer, rand() % 640, rand() % 480));
+			Entities.push_back(new Star(mPlayer, rand() % Settings::getInstance().ScreenWidth, rand() % Settings::getInstance().ScreenHeight));
 		}
 	}
 
