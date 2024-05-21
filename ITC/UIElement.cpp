@@ -27,3 +27,23 @@ void UIElement::HandleMouseMove(int x, int y)
 		j->HandleMouseMove(x, y);
 	}
 }
+
+void UIElement::UpdateSizeAndPosition(SDL_Rect& boundingBox)
+{
+	Position.x = boundingBox.x;
+	Position.y = boundingBox.y;
+	Size.x = boundingBox.w;
+	Size.y = boundingBox.h;
+}
+
+Vector2 UIElement::GetAbsolutePosition()
+{
+	if (Parent != nullptr)
+	{
+		return Parent->GetAbsolutePosition() + Position;
+	}
+	else
+	{
+		return Position;
+	}
+}

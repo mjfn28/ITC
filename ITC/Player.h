@@ -6,7 +6,9 @@
 #include <SDL_ttf.h>
 #include "Label.h"
 #include "Panel.h"
+#include "Button.h"
 #include "ToggleButton.h"
+#include "ProgressBar.h"
 
 typedef std::list<Ship*> Ships;
 
@@ -19,13 +21,20 @@ public:
 	void SendSelectedShipToTarget(Star* target);
 	void SelectShip(Ship* ship);
 	Ship* SelectedShip;
+
+	void UpdateUI();//todo should be private
+
 private:
 	UIElement* InitializeUI();
 
 	Label* mLabel;
 	Label* mLocationLabel;
 	ToggleButton* mToggleButton;
+	Button* mButton;
+	ProgressBar* mProgressBar;
 	Panel* mPanel;
+	
+	void Refuel();
 };
 
 class PlayerRenderable : public Renderable

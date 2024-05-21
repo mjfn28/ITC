@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Button.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="Label.cpp" />
@@ -27,6 +28,7 @@
     <ClCompile Include="Panel.cpp" />
     <ClCompile Include="Physics.cpp" />
     <ClCompile Include="Player.cpp" />
+    <ClCompile Include="ProgressBar.cpp" />
     <ClCompile Include="Rendering.cpp" />
     <ClCompile Include="SDLFontLoader.cpp" />
     <ClCompile Include="SDLImageLoader.cpp" />
@@ -34,11 +36,13 @@
     <ClCompile Include="Star.cpp" />
     <ClCompile Include="StarNameGenerator.cpp" />
     <ClCompile Include="ToggleButton.cpp" />
+    <ClCompile Include="UI.cpp" />
     <ClCompile Include="UIRoot.cpp" />
     <ClCompile Include="UIRoot.h" />
     <ClCompile Include="UIElement.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Button.h" />
     <ClInclude Include="Cargo.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="Entity.h" />
@@ -50,6 +54,7 @@
     <ClInclude Include="Panel.h" />
     <ClInclude Include="Physics.h" />
     <ClInclude Include="Player.h" />
+    <ClInclude Include="ProgressBar.h" />
     <ClInclude Include="Renderable.h" />
     <ClInclude Include="Rendering.h" />
     <ClInclude Include="Scene.h" />
@@ -63,6 +68,7 @@
     <ClInclude Include="ToggleButton.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Types.h" />
+    <ClInclude Include="UI.h" />
     <ClInclude Include="UIElement.h" />
   </ItemGroup>
   <ItemGroup>

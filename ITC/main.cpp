@@ -13,6 +13,7 @@ and may not be redistributed without written permission.*/
 #include "SDLFontLoader.h"
 #include "Input.h"
 #include "Settings.h"
+#include "UI.h"
 
 //Screen dimension constants
 Uint64 lastTicks = 0;
@@ -79,6 +80,7 @@ int main(int argc, char* args[])
 		Rendering rendering(gRenderer);
 		Physics physics;
 		Input input;
+		UI ui;
 
 		lastTicks = SDL_GetTicks64();
 
@@ -95,8 +97,9 @@ int main(int argc, char* args[])
 			//Clear screen
 			SDL_RenderClear(gRenderer);
 
-			rendering.Update(s.Entities);
+			ui.Update(s.Entities);
 			physics.Update(s.Entities);
+			rendering.Update(s.Entities);
 			Uint64 current = SDL_GetTicks64();
 			//Update screen
 			rendering.Render();

@@ -10,6 +10,8 @@ public:
 
 	UIElement* Root;
 
+	void Update();
+
 	void Render(SDL_Renderer* renderer) override;
 	void HandleMouseDown(int x, int y) override;
 	void HandleMouseMove(int x, int y) override;

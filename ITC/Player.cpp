@@ -4,6 +4,7 @@
 #include "ToggleButton.h"
 #include "Settings.h"
 #include "UIRoot.h"
+#include <functional>
 
 Player::Player()
 {
@@ -25,7 +26,7 @@ UIElement* Player::InitializeUI()
 	mPanel = new Panel(nullptr);
 	mPanel->Padding = 20;
 
-	char buffer[20];
+	/*char buffer[20];
 
 	if (SelectedShip != nullptr)
 	{
@@ -37,7 +38,20 @@ UIElement* Player::InitializeUI()
 	}
 
 	mLabel = new Label(255, 255, 255, "fonts/PixelifySans-Regular.ttf", buffer);
-	mPanel->Children.push_back(mLabel);
+	mPanel->Children.push_back(mLabel);*/
+
+	mProgressBar = new ProgressBar(mPanel);
+	mProgressBar->Size = Vector2(300, 30);
+	if (SelectedShip != nullptr)
+	{
+		mProgressBar->Progress = SelectedShip->Fuel / 100.0f;
+	}
+	else
+	{
+		mProgressBar->Progress = 1.0f;
+	}
+	
+	mPanel->Children.push_back(mProgressBar);
 
 	mLocationLabel = new Label(255, 255, 255, "fonts/PixelifySans-Regular.ttf", "Moving");
 	mPanel->Children.push_back(mLocationLabel);
@@ -50,7 +64,30 @@ UIElement* Player::InitializeUI()
 
 	mPanel->Children.push_back(mToggleButton);
 
+	mButton = new Button(mPanel, "Refuel");
+	mButton->Position.x = 362;
+	mButton->Position.y = 926;
+	mButton->Size.x = 84;
+	mButton->Size.y = 34;
+	std::function<void()> refuel = std::bind(&Player::Refuel, this);
+	mButton->RegisterOnClick(refuel);
+	mPanel->Children.push_back(mButton);
+
 	return mPanel;
+}
+
+void Player::UpdateUI()
+{
+	if (SelectedShip->State == ShipState::IDLE)
+	{
+		mLocationLabel->SetText(SelectedShip->CurrentLocation->Name.c_str());
+	}
+	else
+	{
+		mLocationLabel->SetText("Moving");
+	}
+
+	mProgressBar->Progress = SelectedShip->Fuel / 100.0f;
 }
 
 void Player::SendSelectedShipToTarget(Star* target)
@@ -61,6 +98,11 @@ void Player::SendSelectedShipToTarget(Star* target)
 void Player::SelectShip(Ship* ship)
 {
 	SelectedShip = ship;
+}
+
+void Player::Refuel()
+{
+	SelectedShip->Fuel = 100;
 }
 
 void PlayerRenderable::Render(SDL_Renderer* renderer)

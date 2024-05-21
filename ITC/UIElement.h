@@ -15,6 +15,8 @@ public :
 	std::list<UIElement*> Children;
 	Vector2 Position;
 	Vector2 Size;
+	void UpdateSizeAndPosition(SDL_Rect& boundingBox);
+	Vector2 GetAbsolutePosition();
 
 	UIElement(UIElement* Parent);
 	virtual SDL_Texture* GetTexture(SDL_Renderer* renderer) = 0;

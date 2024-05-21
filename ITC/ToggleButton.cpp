@@ -1,18 +1,9 @@
 #include "ToggleButton.h"
 
 ToggleButton::ToggleButton(UIElement* parent, const char* text)
-	:UIElement(parent)
+	:Button(parent, text)
 {
-	mNeedsUpdate = true;
-
 	IsToggled = false;
-
-	delete[] mText;
-	mText = new char[strlen(text) + 1];
-	strcpy(mText, text);
-
-	mButtonLabel = new Label(255, 255, 255, "fonts/PixelifySans-Regular.ttf", mText);
-	Children.push_back(mButtonLabel);
 }
 
 SDL_Texture* ToggleButton::GetTexture(SDL_Renderer* renderer)
@@ -22,7 +13,7 @@ SDL_Texture* ToggleButton::GetTexture(SDL_Renderer* renderer)
 
 SDL_Surface* ToggleButton::GetSurface(SDL_Renderer* renderer)
 {
-	if (mNeedsUpdate)
+	/*if (mNeedsUpdate)
 	{
 		SDL_FreeSurface(mSurface);
 		int w = 0;
@@ -63,15 +54,17 @@ SDL_Surface* ToggleButton::GetSurface(SDL_Renderer* renderer)
 		SDL_BlitSurface(surf, &srcRect, mSurface, &dstRect);
 	}
 
-	return mSurface;
+	return mSurface;*/
+
+	return Button::GetSurface(renderer);
 }
 
-void ToggleButton::HandleMouseDown(int x, int y)
-{
-	if ((x > Position.x && x < Position.x + Size.x) && (y > Position.y && y < Position.y + Size.y))
-	{
-		IsToggled = !IsToggled;
-	}
-
-	UIElement::HandleMouseDown(x, y);
-}
+//void ToggleButton::HandleMouseDown(int x, int y)
+//{
+//	if ((x > Position.x && x < Position.x + Size.x) && (y > Position.y && y < Position.y + Size.y))
+//	{
+//		IsToggled = !IsToggled;
+//	}
+//
+//	UIElement::HandleMouseDown(x, y);
+//}

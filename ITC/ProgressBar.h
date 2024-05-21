@@ -1,14 +1,12 @@
 #pragma once
-#include "Button.h"
 
-class ToggleButton : public Button
+#include "UIElement.h"
+
+class ProgressBar : public UIElement
 {
-private:
-
 public:
-	ToggleButton(UIElement* parent, const char* text);
-
-	bool IsToggled;
+	ProgressBar(UIElement* parent);
+	float Progress;
 	SDL_Surface* GetSurface(SDL_Renderer* renderer) override;
 	SDL_Texture* GetTexture(SDL_Renderer* renderer) override;
 };

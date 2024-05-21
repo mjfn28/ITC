@@ -54,6 +54,8 @@ SDL_Surface* Panel::GetSurface(SDL_Renderer* renderer)
 			nextX += Padding;
 			nextY += surf->h;
 
+			child->UpdateSizeAndPosition(dstRect);
+
 			SDL_BlitSurface(surf, &srcRect, mSurface, &dstRect);
 		}
 	}
