@@ -25,20 +25,7 @@ UIElement* Player::InitializeUI()
 {
 	mPanel = new Panel(nullptr);
 	mPanel->Padding = 20;
-
-	/*char buffer[20];
-
-	if (SelectedShip != nullptr)
-	{
-		sprintf_s(buffer, "F: %f", SelectedShip->Fuel);
-	}
-	else
-	{
-		sprintf_s(buffer, "F: %f", "Fuel");
-	}
-
-	mLabel = new Label(255, 255, 255, "fonts/PixelifySans-Regular.ttf", buffer);
-	mPanel->Children.push_back(mLabel);*/
+	mPanel->Orientation = Horizontal;
 
 	mProgressBar = new ProgressBar(mPanel);
 	mProgressBar->Size = Vector2(300, 30);
@@ -53,22 +40,12 @@ UIElement* Player::InitializeUI()
 	
 	mPanel->Children.push_back(mProgressBar);
 
-	mLocationLabel = new Label(255, 255, 255, "fonts/PixelifySans-Regular.ttf", "Moving");
-	mPanel->Children.push_back(mLocationLabel);
-
-	mToggleButton = new ToggleButton(mPanel, "BUY");
-	mToggleButton->Position.x = 295;
-	mToggleButton->Position.y = 926;
-	mToggleButton->Size.x = 47;
-	mToggleButton->Size.y = 34;
+	mToggleButton = new ToggleButton(mPanel, new Label(255, 255, 255, "fonts/PixelifySans-Regular.ttf", "Moving"));
 
 	mPanel->Children.push_back(mToggleButton);
 
-	mButton = new Button(mPanel, "Refuel");
-	mButton->Position.x = 362;
-	mButton->Position.y = 926;
-	mButton->Size.x = 84;
-	mButton->Size.y = 34;
+	mButton = new Button(mPanel, new Label(255, 255, 255, "fonts/PixelifySans-Regular.ttf", "Refuel"));
+
 	std::function<void()> refuel = std::bind(&Player::Refuel, this);
 	mButton->RegisterOnClick(refuel);
 	mPanel->Children.push_back(mButton);
@@ -80,12 +57,14 @@ void Player::UpdateUI()
 {
 	if (SelectedShip->State == ShipState::IDLE)
 	{
-		mLocationLabel->SetText(SelectedShip->CurrentLocation->Name.c_str());
+		((Label*)mToggleButton->Content)->SetText(SelectedShip->CurrentLocation->Name.c_str());
 	}
 	else
 	{
-		mLocationLabel->SetText("Moving");
+		((Label*)mToggleButton->Content)->SetText("Moving");
 	}
+
+	mButton->IsVisible = mToggleButton->IsToggled;
 
 	mProgressBar->Progress = SelectedShip->Fuel / 100.0f;
 }

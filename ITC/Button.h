@@ -19,7 +19,7 @@ private:
 	ButtonState mState;
 
 public:
-	Button(UIElement* parent, const char* text);
+	Button(UIElement* parent, UIElement* text);
 
 	SDL_Surface* GetSurface(SDL_Renderer* renderer) override;
 	SDL_Texture* GetTexture(SDL_Renderer* renderer) override;
@@ -28,5 +28,9 @@ public:
 	void HandleMouseMove(int x, int y) override;
 
 	void RegisterOnClick(std::function<void()> callback);
+	void SetContent(UIElement* content);
+
+	UIElement* Content;
+
 };
 

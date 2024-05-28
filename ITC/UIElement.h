@@ -15,6 +15,7 @@ public :
 	std::list<UIElement*> Children;
 	Vector2 Position;
 	Vector2 Size;
+	bool IsVisible;
 	void UpdateSizeAndPosition(SDL_Rect& boundingBox);
 	Vector2 GetAbsolutePosition();
 

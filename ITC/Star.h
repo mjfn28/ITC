@@ -18,6 +18,8 @@ public:
 
 private:
 	Player* mPlayer;
+
+	void InitializeCargo();
 };
 
 class StarRenderable : public Renderable

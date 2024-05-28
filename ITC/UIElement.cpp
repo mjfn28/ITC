@@ -9,6 +9,8 @@ UIElement::UIElement(UIElement* parent)
 	Size.x = 0;
 	Size.y = 0;
 
+	IsVisible = true;
+
 	mTexture = nullptr;
 }
 

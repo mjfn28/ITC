@@ -1,16 +1,11 @@
 #include "Button.h"
 
-Button::Button(UIElement* parent, const char* text)
+Button::Button(UIElement* parent, UIElement* content)
 	:UIElement(parent)
 {
 	mNeedsUpdate = true;
 
-	delete[] mText;
-	mText = new char[strlen(text) + 1];
-	strcpy(mText, text);
-
-	mButtonLabel = new Label(255, 255, 255, "fonts/PixelifySans-Regular.ttf", mText);
-	Children.push_back(mButtonLabel);
+	SetContent(content);
 }
 
 SDL_Texture* Button::GetTexture(SDL_Renderer* renderer)
@@ -26,7 +21,7 @@ SDL_Surface* Button::GetSurface(SDL_Renderer* renderer)
 		int w = 0;
 		int h = 0;
 
-		SDL_Surface* surf = mButtonLabel->GetSurface(renderer);
+		SDL_Surface* surf = Content->GetSurface(renderer);
 		w += surf->w;
 		h = surf->h;
 
@@ -77,7 +72,7 @@ SDL_Surface* Button::GetSurface(SDL_Renderer* renderer)
 void Button::HandleMouseDown(int x, int y)
 {
 	Vector2 pos = GetAbsolutePosition();
-	if ((x > pos.x && x < pos.x + Size.x) && (y > pos.y && y < pos.y + Size.y))
+	if ((x > pos.x && x < pos.x + Size.x) && (y > pos.y && y < pos.y + Size.y) && IsVisible)
 	{
 		mState = ButtonState::Clicked;
 		if (mClickCallback != nullptr)
@@ -95,7 +90,7 @@ void Button::HandleMouseDown(int x, int y)
 void Button::HandleMouseMove(int x, int y)
 {
 	Vector2 pos = GetAbsolutePosition();
-	if ((x > pos.x && x < pos.x + Size.x) && (y > pos.y && y < pos.y + Size.y))
+	if ((x > pos.x && x < pos.x + Size.x) && (y > pos.y && y < pos.y + Size.y) && IsVisible)
 	{
 		mState = ButtonState::MouseOver;
 	}
@@ -110,4 +105,11 @@ void Button::HandleMouseMove(int x, int y)
 void Button::RegisterOnClick(std::function<void()> callback)
 {
 	mClickCallback = callback;
+}
+
+void Button::SetContent(UIElement* content)
+{
+	Content = content;
+	Children.push_back(Content);
+	mNeedsUpdate = true;
 }

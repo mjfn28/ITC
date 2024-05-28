@@ -23,12 +23,20 @@ Star::Star(Player* player, int posX, int posY)
 	StarInputHandler* si = new StarInputHandler(this);
 	mComponents.push_back(si);
 
-	CargoList.push_back(new Cargo(CargoType::Ice, 100));
+	InitializeCargo();
 }
 
 void Star::Select() 
 {
 	mPlayer->SendSelectedShipToTarget(this);
+}
+
+void Star::InitializeCargo()
+{
+	for (int i = 0; i < (rand() % 5) + 1; i++)
+	{
+		CargoList.push_back(new Cargo((CargoType)(rand() % 3), rand() % 100));
+	}
 }
 
 void StarRenderable::Render(SDL_Renderer* renderer)
@@ -43,7 +51,7 @@ void StarRenderable::Render(SDL_Renderer* renderer)
 
 	if (mHolder->GetComponent<StarInputHandler>().front()->IsMouseOver)
 	{
-		DrawCircle(renderer, transform->PosX, transform->PosY, 10);
+		DrawCircle(renderer, transform->PosX-1, transform->PosY-1, 11);
 	}
 };
 

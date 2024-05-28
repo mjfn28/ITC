@@ -1,13 +1,14 @@
 #pragma once
 
-enum CargoType
+enum CargoType : uint8_t
 {
-	Unknown,
-	Ice
-
+	Unknown = 0,
+	Ice = 1,
+	Iron = 2,
+	Helium = 3
 };
 
-class Cargo
+struct Cargo
 {
 public:
 	Cargo(CargoType type, unsigned int quantity)

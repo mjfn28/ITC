@@ -1,6 +1,6 @@
 #include "ToggleButton.h"
 
-ToggleButton::ToggleButton(UIElement* parent, const char* text)
+ToggleButton::ToggleButton(UIElement* parent, UIElement* text)
 	:Button(parent, text)
 {
 	IsToggled = false;
@@ -59,12 +59,13 @@ SDL_Surface* ToggleButton::GetSurface(SDL_Renderer* renderer)
 	return Button::GetSurface(renderer);
 }
 
-//void ToggleButton::HandleMouseDown(int x, int y)
-//{
-//	if ((x > Position.x && x < Position.x + Size.x) && (y > Position.y && y < Position.y + Size.y))
-//	{
-//		IsToggled = !IsToggled;
-//	}
-//
-//	UIElement::HandleMouseDown(x, y);
-//}
+void ToggleButton::HandleMouseDown(int x, int y)
+{
+	Vector2 pos = GetAbsolutePosition();
+	if ((x > pos.x && x < pos.x + Size.x) && (y > pos.y && y < pos.y + Size.y) && IsVisible)
+	{
+		IsToggled = !IsToggled;
+	}
+
+	UIElement::HandleMouseDown(x, y);
+}
